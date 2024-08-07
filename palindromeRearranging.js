@@ -20,7 +20,7 @@
             reversed.push(ar[i])
             continue;
         }
-        const middle = Math.floor(temp.length / 2);
+        const middle = Math.floor(temp.length / 2 );
         temp.splice(middle, 0, ar[i])
         reversed.splice(middle, 0, ar[i])
     }
@@ -42,3 +42,14 @@ function solution(inputString) {
  console.log(solution("abcad")) // false
  console.log(solution("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbccccaaaaaaaaaaaaa")) // false
  
+
+// is beatiful
+ function solution(inputString) {
+     return inputString
+         .split('')
+         .sort()
+         .join('')
+         .replace(/([a-z])\1*/g, (it) => it.length + ',').split(',').slice(0, -1).map(Number).every((el, i, ar) => (inputString.indexOf(String.fromCharCode(i + 'a'.charCodeAt(0))) >= 0 && (i == 0 || ar[i] <= ar[i - 1])))
+ }
+
+ // cat, matrix, 10 x 10 
